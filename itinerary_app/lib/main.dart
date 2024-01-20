@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'description':
           'Renowned nightclub with multiple dance floors, hosting international DJs and a vibrant atmosphere.',
       'price': 0, // Numerical value for price
-      'Image':
+      'image':
           "https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/history/national-museum-of-singapore-carousel01-rect.jpeg",
       'reviews': ['Fantastic music!', 'Lively crowd.'],
       'preferredTime': 'Evening',
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'closingTime': '22:00',
       'description':
           'Stylish rooftop bar and club offering panoramic views of the city skyline and a sophisticated nightlife experience.',
-      'Image':
+      'image':
           "https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/history/national-museum-of-singapore-carousel01-rect.jpeg",
       'price': 0, // Numerical value for price
       'reviews': ['Incredible cityscape!', 'Elegant ambiance.'],
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         String preferredTime = monument['preferredTime'];
         String visitingHours = monument['visitingHours'];
         int duration = monument['duration'] ?? 0; // Duration in hours
-
+        String image = monument['image'];
         DateTime startTime = currentTime;
 
         // Parse visiting hours to get the start and end times
@@ -124,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
           'duration': duration,
           'startTime': startTime,
           'endTime': endTime,
+          'image': image,
         });
 
         currentTime = endTime;
@@ -153,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
           int duration = itinerary[index]['duration'];
           DateTime startTime = itinerary[index]['startTime'];
           DateTime endTime = itinerary[index]['endTime'];
+          String image = itinerary[index]['image'];
 
           return buildItineraryCard(
             name,
@@ -163,6 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
             startTime,
             endTime,
             index,
+            image,
           );
         },
       ),
@@ -178,6 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DateTime startTime,
     DateTime endTime,
     int index,
+    String image,
   ) {
     return Card(
       margin: EdgeInsets.all(8.0),
@@ -186,22 +190,36 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (context) {
               return Container(
-                height: 400,
+                height: MediaQuery.of(context).size.height*0.95,
                 child: Wrap(
                 children: [
+                  Image.network(image),
                   ListTile(
-                    leading: Icon(Icons.share),
-                    title: Text('Share'),
+                    leading: Icon(Icons.my_location),
+                    title: Text('Location: $location'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.copy),
-                    title: Text('Copy Link'),
+                    leading: Icon(Icons.access_time),
+                    title: Text('Preferred Time: $preferredTime'),
                   ),
                   ListTile(
                     leading: Icon(Icons.edit),
-                    title: Text('Edit'),
+                    title: Text('Visiting Hours: $visitingHours'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.timer),
+                    title: Text('Duration: $duration hours'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.access_time),
+                    title: Text('Start Time: ${startTime.hour}:${startTime.minute}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.timer_off),
+                    title: Text('End Time: ${endTime.hour}:${endTime.minute}'),
                   ),
                 ],
               ),
