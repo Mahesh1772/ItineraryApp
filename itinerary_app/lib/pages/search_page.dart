@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/components/neumorphic_box.dart';
 import 'package:itinerary_app/components/places_tile.dart';
+import 'package:itinerary_app/models/selected_places.dart';
 import 'package:itinerary_app/pages/itinerary_display_page.dart';
 import 'package:itinerary_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +26,27 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  void addToSelectedPlaces(Location location) {
+    Provider.of<SelectedPlaces>(context, listen: false)
+        .addToSelectedPlaces(location);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Added to Itinerary'),
+        content: Text('Added ${location.name} to Itinerary'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Close'),
+          ),
+        ],
+      ),
+    );
+  }
+
   // To store text being searched
   String searchText = '';
 
@@ -60,239 +83,249 @@ class _SearchPageState extends State<SearchPage> {
     print(widget.startDate);
     print(widget.startTime);
     print(widget.endTime);
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: NeumorphicBox(
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new, size: 25.sp),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: NeumorphicBox(
-                    child: IconButton(
-                      icon: Icon(Icons.brightness_4, size: 30.sp),
-                      onPressed: () {
-                        Provider.of<ThemeProvider>(context, listen: false)
-                            .toggleTheme();
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 25.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Consumer<SelectedPlaces>(
+      builder: (context, value, child) => Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Discover",
-                    style: TextStyle(
-                        fontFamily: 'Gilroy',
-                        fontSize: 40.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.secondary),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: NeumorphicBox(
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back_ios_new, size: 25.sp),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
                   ),
-                  Text(
-                    "a new world.",
-                    style: TextStyle(
-                        fontFamily: 'Gilroy',
-                        fontSize: 40.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.secondary),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: NeumorphicBox(
+                      child: IconButton(
+                        icon: Icon(Icons.brightness_4, size: 30.sp),
+                        onPressed: () {
+                          Provider.of<ThemeProvider>(context, listen: false)
+                              .toggleTheme();
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ItineraryPage(),
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: Center(
-                  child: Text(
-                    'Show Itinerary Page',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Theme.of(context).colorScheme.secondary,
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 25.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Discover",
+                      style: TextStyle(
+                          fontFamily: 'Gilroy',
+                          fontSize: 40.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.secondary),
                     ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
-              child: NeumorphicBox(
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      searchText = value;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Search...',
-                    hintStyle: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.45),
-                      fontSize: 18.sp,
+                    Text(
+                      "a new world.",
+                      style: TextStyle(
+                          fontFamily: 'Gilroy',
+                          fontSize: 40.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.secondary),
                     ),
-                    focusColor: Theme.of(context).colorScheme.secondary,
-                    suffixIcon: Icon(
-                      Icons.search_outlined,
-                      size: 30.sp,
-                      color: Theme.of(context).colorScheme.secondary,
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ItineraryPage(),
                     ),
-                    prefixIconColor: Theme.of(context).colorScheme.secondary,
-                    fillColor: Theme.of(context).colorScheme.primary,
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16.r),
-                        borderSide: BorderSide.none),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
-              child: Text(
-                "Search Mode: ",
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0.w),
-              child: Container(
-                padding: EdgeInsets.all(5.sp),
-                margin: EdgeInsets.all(5.sp),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                      spacing: 10.w,
-                      children: categories
-                          .asMap()
-                          .entries
-                          .map(
-                            (category) => ChoiceChip(
-                              elevation: 5,
-                              pressElevation: 0,
-                              selected: isSelectedList[category.key],
-                              label: Text(category.value),
-                              labelStyle: TextStyle(
-                                color: Theme.of(context).colorScheme.secondary,
-                                fontSize: 16.sp,
-                              ),
-                              onSelected: (selected) {
-                                setState(() {
-                                  isSelectedList = List.filled(
-                                      categories.length,
-                                      false); // Reset all values to false
-                                  isSelectedList[category.key] =
-                                      selected; // Set the selected value to true for the chosen category
-
-                                  print(selectedCategory);
-                                });
-                              },
-                              selectedColor:
-                                  Theme.of(context).colorScheme.primary,
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.primary,
-                            ),
-                          )
-                          .toList()),
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
-              child: Text(
-                "Places",
-                style: TextStyle(
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w900,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-            ),
-            SizedBox(height: 10.h),
-            Expanded(
-              child: GridView.builder(
-                itemCount: monuments.length,
-                padding: EdgeInsets.all(12.sp),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
-                itemBuilder: (context, index) {
-                  return PlacesTile(
-                    location: monuments[index],
-                    onTap: () {
-                      _showPlaceDetails(context, monuments[index]); 
-                    },
                   );
                 },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.all(20),
+                  child: Center(
+                    child: Text(
+                      'Show Itinerary Page',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
+                child: NeumorphicBox(
+                  child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        searchText = value;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      hintStyle: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0.45),
+                        fontSize: 18.sp,
+                      ),
+                      focusColor: Theme.of(context).colorScheme.secondary,
+                      suffixIcon: Icon(
+                        Icons.search_outlined,
+                        size: 30.sp,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      prefixIconColor: Theme.of(context).colorScheme.secondary,
+                      fillColor: Theme.of(context).colorScheme.primary,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16.r),
+                          borderSide: BorderSide.none),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
+                child: Text(
+                  "Search Mode: ",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+                child: Container(
+                  padding: EdgeInsets.all(5.sp),
+                  margin: EdgeInsets.all(5.sp),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Wrap(
+                        spacing: 10.w,
+                        children: categories
+                            .asMap()
+                            .entries
+                            .map(
+                              (category) => ChoiceChip(
+                                elevation: 5,
+                                pressElevation: 0,
+                                selected: isSelectedList[category.key],
+                                label: Text(category.value),
+                                labelStyle: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  fontSize: 16.sp,
+                                ),
+                                onSelected: (selected) {
+                                  setState(() {
+                                    isSelectedList = List.filled(
+                                        categories.length,
+                                        false); // Reset all values to false
+                                    isSelectedList[category.key] =
+                                        selected; // Set the selected value to true for the chosen category
+
+                                    print(selectedCategory);
+                                  });
+                                },
+                                selectedColor:
+                                    Theme.of(context).colorScheme.primary,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.primary,
+                              ),
+                            )
+                            .toList()),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.h),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
+                child: Text(
+                  "Places",
+                  style: TextStyle(
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w900,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: monuments.length,
+                  padding: EdgeInsets.all(12.sp),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
+                  itemBuilder: (context, index) {
+                    Location location = value.getPlaces()[index];
+                    return PlacesTile(
+                      location: location,
+                      onTap: () {
+                        _showPlaceDetails(context, monuments[index]);
+                      },
+                      onPlusTap: () {
+                        addToSelectedPlaces(location);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-  void _showPlaceDetails(BuildContext context, Location place) { 
-    showDialog( 
-      context: context, 
-      builder: (BuildContext context) { 
-        return AlertDialog( 
-          title: Text(place.name), 
-          content: Column( 
-            crossAxisAlignment: CrossAxisAlignment.start, 
-            mainAxisSize: MainAxisSize.min, 
-            children: [ 
-              Text('Location: ${place.location}'), 
-              Text('Description: ${place.description}'), 
-              // ... add other fields as needed 
-            ], 
-          ), 
-          actions: [ 
-            TextButton( 
-              onPressed: () { 
-                Navigator.of(context).pop(); 
-              }, 
-              child: Text('Close'), 
-            ), 
-          ], 
-        ); 
-      }, 
-    ); 
-  } 
+void _showPlaceDetails(BuildContext context, Location place) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(place.name),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Location: ${place.location}'),
+            Text('Description: ${place.description}'),
+            // ... add other fields as needed
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
+}

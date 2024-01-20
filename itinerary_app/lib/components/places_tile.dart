@@ -87,10 +87,13 @@ Widget rollingIconBuilder(bool value, Size iconSize, bool foreground) {
 class PlacesTile extends StatelessWidget {
   final Location location;
   final VoidCallback onTap;
+  final Function()? onPlusTap;
 
   const PlacesTile({
+    super.key,
     required this.location,
     required this.onTap,
+    required this.onPlusTap,
   });
 
   @override
@@ -159,23 +162,26 @@ class PlacesTile extends StatelessWidget {
                 children: [
                   //Icon(Icons.wb_sunny_outlined, size: 30.sp),
                   //SizedBox(height: 10.h),
-                  Padding(
-                    padding: EdgeInsets.only(top: 215.0.h, left: 150.0.w),
-                    child: Container(
-                      alignment: Alignment.bottomRight,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.w, vertical: 15.h),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.r),
-                          bottomRight: Radius.circular(15.r),
+                  GestureDetector(
+                    onTap: onPlusTap,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 215.0.h, left: 150.0.w),
+                      child: Container(
+                        alignment: Alignment.bottomRight,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.w, vertical: 15.h),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.secondary,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.r),
+                            bottomRight: Radius.circular(15.r),
+                          ),
                         ),
-                      ),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 20.sp,
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20.sp,
+                        ),
                       ),
                     ),
                   ),
