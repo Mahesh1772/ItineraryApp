@@ -20,6 +20,40 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Map<String, dynamic>> monuments = [
+    {
+      'category': 'Places to eat',
+      'name': 'Maxwell Food Centre',
+      'location': '1 Kadayanallur Street, Singapore',
+      'visitingHours': '10:00 - 21:00',
+      'closingTime': '21:00',
+      'description': 'Hawker center offering a variety of local dishes, including Hainanese chicken rice and laksa.',
+      'price': '30',
+      'reviews': ['Amazing view!', 'Must-visit restaurant.'],
+      'preferredTime': 'Afternoon',
+      'priority': '2',
+    },
+    {
+      'name': 'Chinatown Complex Food Centre',
+      'location': '335 Smith Street, Singapore',
+      'visitingHours': '10:00 - 21:00',
+      'closingTime': '21:00',
+      'description': 'Large hawker center in Chinatown with a wide array of affordable and delicious local food options.',
+      'price': 'Budget-friendly',
+      'reviews': ['Amazing food!', 'Must-visit restaurant.'],
+      'preferredTime': 'Evening',
+      'priority': '3',
+    },
+    {
+      'name': 'Newton Food Centre',
+      'location': '500 Clemenceau Avenue North, Singapore',
+      'visitingHours': '10:00 - 21:00',
+      'closingTime': '21:00',
+      'description': 'Popular open-air hawker center known for its seafood and local delights.',
+      'price': 'Moderate',
+      'reviews': ['Amazing Food!', 'Must-visit restaurant.'],
+      'preferredTime': 'Evening',
+      'priority': '3',
+    },
     // Monuments
     {
       'category': 'Monument',
