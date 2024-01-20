@@ -187,7 +187,9 @@ class _MyHomePageState extends State<MyHomePage> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return Wrap(
+              return Container(
+                height: 400,
+                child: Wrap(
                 children: [
                   ListTile(
                     leading: Icon(Icons.share),
@@ -202,6 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: Text('Edit'),
                   ),
                 ],
+              ),
               );
             },
           );
