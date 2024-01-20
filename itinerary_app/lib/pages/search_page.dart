@@ -237,7 +237,18 @@ class _SearchPageState extends State<SearchPage> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
                 itemBuilder: (context, index) {
-                  return PlacesTile(isSelected: false, name: "name", category: "category", location: "location", visitingHours: "visitingHours", closingTime: "closingTime", description: "description", price: "price", reviews: "reviews", preferredTime: "preferredTime", image: "image")
+                  return PlacesTile(
+                      isSelected: false,
+                      name: "name",
+                      category: "category",
+                      location: "location",
+                      visitingHours: "visitingHours",
+                      closingTime: "closingTime",
+                      description: "description",
+                      price: "price",
+                      reviews: "reviews",
+                      preferredTime: "preferredTime",
+                      image: "image");
                 },
               ),
             ),
