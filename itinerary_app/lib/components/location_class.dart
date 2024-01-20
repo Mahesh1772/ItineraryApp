@@ -170,4 +170,296 @@ List<Location> locations = [
     duration: 3,
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
   ),
+  Location(
+      category: 'Special Attraction',
+      name: 'Gardens by the Bay',
+      location: '18 Marina Gardens Drive, Singapore',
+      visitingHours: '09:00 - 21:00',
+      closingTime: '21:00',
+      description:
+          'Futuristic park featuring the iconic Supertree Grove, Flower Dome, and Cloud Forest.',
+      price: 0,
+      reviews: ['Breathtaking views!', 'Must-see attractions.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 1,
+      image:
+          'https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/nature-wildlife/gbtb/carousel1-940x940.jpg',
+    ),
+    Location(
+      category: 'Special Attraction',
+      name: 'Sentosa Island',
+      location: 'Sentosa, Singapore',
+      visitingHours: '09:00 - 21:00',
+      closingTime: '21:00',
+      description:
+          'Popular resort island with attractions like Universal Studios, S.E.A. Aquarium, and Adventure Cove Waterpark.',
+      price: 0,
+      reviews: ['Fun-filled island!', 'Great for families.'],
+      preferredTime: 'Full Day',
+      priority: '4',
+      duration: 3,
+      image:
+          'https://a.cdn-hotels.com/gdcs/production187/d438/72aa3862-1a1d-4005-a030-a331431c8b4f.jpg',
+    ),
+        Location(
+      category: 'Special Attraction',
+      name: 'Singapore Flyer',
+      location: '30 Raffles Avenue, Singapore',
+      visitingHours: '08:30 - 22:30',
+      closingTime: '22:30',
+      description:
+          'Giant Ferris wheel offering panoramic views of the city skyline and beyond.',
+      price: 33,
+      reviews: ['Spectacular views!', 'Romantic experience.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/5/53/Dikaiosp_210819_6963.jpg',
+    ),
+    Location(
+      category: 'Special Attraction',
+      name: 'ArtScience Museum',
+      location: '6 Bayfront Avenue, Singapore',
+      visitingHours: '10:00 - 19:00',
+      closingTime: '19:00',
+      description:
+          'Futuristic museum with innovative exhibits blending art, science, and technology.',
+      price: 21,
+      reviews: ['Inspiring exhibits!', 'Family-friendly.'],
+      preferredTime: 'Morning',
+      priority: '2',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/5/53/Dikaiosp_210819_6963.jpg',
+    ),
+    Location(
+      category: 'Special Attraction',
+      name: 'Haw Par Villa',
+      location: '262 Pasir Panjang Road, Singapore',
+      visitingHours: '09:00 - 18:00',
+      closingTime: '18:00',
+      description:
+          'Theme park showcasing Chinese mythology through vibrant sculptures and dioramas.',
+      price: 0,
+      reviews: ['Unique experience!', 'Cultural exploration.'],
+      preferredTime: 'Afternoon',
+      priority: '2',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+        Location(
+      category: 'Special Attraction',
+      name: 'National Gallery Singapore',
+      location: '1 St. Andrew\'s Road, Singapore',
+      visitingHours: '10:00 - 19:00',
+      closingTime: '19:00',
+      description:
+          'Art museum housed in two national monuments, showcasing Singaporean and Southeast Asian art.',
+      price: 20,
+      reviews: ['Artistic masterpiece!', 'Cultural immersion.'],
+      preferredTime: 'Afternoon',
+      priority: '2',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Special Attraction',
+      name: 'Singapore Discovery Centre',
+      location: '510 Upper Jurong Road, Singapore',
+      visitingHours: '09:00 - 18:00',
+      closingTime: '18:00',
+      description:
+          'Interactive museum with exhibits on Singapore\'s history, defense, and technological advancements.',
+      price: 18,
+      reviews: ['Educational and fun!', 'Great for families.'],
+      preferredTime: 'Morning',
+      priority: '1',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+
+    // Parks
+    Location(
+      category: 'Park',
+      name: 'Singapore Botanic Gardens',
+      location: '1 Cluny Road, Singapore',
+      visitingHours: '05:00 - 00:00',
+      closingTime: '00:00',
+      description:
+          'Lush, expansive garden with themed sections, including the National Orchid Garden.',
+      price: 0,
+      reviews: ['Green oasis!', 'Perfect for nature lovers.'],
+      preferredTime: 'Morning',
+      priority: '1',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Park',
+      name: 'East Coast Park',
+      location: 'East Coast Park Service Road, Singapore',
+      visitingHours: '00:00 - 24:00',
+      closingTime: '24:00',
+      description:
+          'Scenic coastal park with beaches, cycling paths, and recreational facilities.',
+      price: 0,
+      reviews: ['Beachside fun!', 'Great for outdoor activities.'],
+      preferredTime: 'Full Day',
+      priority: '4',
+      duration: 1,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Park',
+      name: 'Bishan-Ang Mo Kio Park',
+      location: '1384 Ang Mo Kio Avenue 1, Singapore',
+      visitingHours: '07:00 - 00:00',
+      closingTime: '00:00',
+      description:
+          'Scenic park with water features, playgrounds, and a riverside promenade.',
+      price: 0,
+      reviews: ['Relaxing atmosphere!', 'Great for picnics.'],
+      preferredTime: 'Morning',
+      priority: '1',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Park',
+      name: 'Labrador Nature Reserve',
+      location: 'Labrador Villa Road, Singapore',
+      visitingHours: '07:00 - 19:00',
+      closingTime: '19:00',
+      description:
+          'Nature reserve with historical relics, coastal trails, and lush greenery.',
+      price: 0,
+      reviews: ['Serene nature walk!', 'Historical interest.'],
+      preferredTime: 'Afternoon',
+      priority: '2',
+      duration: 3,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Park',
+      name: 'HortPark',
+      location: '33 Hyderabad Road, Singapore',
+      visitingHours: '06:00 - 22:00',
+      closingTime: '22:00',
+      description:
+          'One-stop gardening hub with themed gardens, plant displays, and horticultural events.',
+      price: 0,
+      reviews: ['Botanical delight!', 'Perfect for plant enthusiasts.'],
+      preferredTime: 'Morning',
+      priority: '1',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Park',
+      name: 'West Coast Park',
+      location: 'West Coast Highway, Singapore',
+      visitingHours: '00:00 - 24:00',
+      closingTime: '24:00',
+      description:
+          'Recreational park with playgrounds, cycling paths, and waterfront views along West Coast Beach.',
+      price: 0,
+      reviews: ['Family-friendly!', 'Relaxing atmosphere.'],
+      preferredTime: 'Full Day',
+      priority: '4',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+
+    // Nightlife
+    Location(
+      category: 'Nightlife',
+      name: 'Clarke Quay',
+      location: 'River Valley Road, Singapore',
+      visitingHours: '21:00 - 05:00',
+      closingTime: '05:00',
+      description:
+          'Riverside quay with a vibrant nightlife scene, featuring bars, restaurants, and nightclubs.',
+      price: 0,
+      reviews: ['Lively atmosphere!', 'Great for partygoers.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 3,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Nightlife',
+      name: 'Zouk Singapore',
+      location: '3C River Valley Road, Clarke Quay, Singapore',
+      visitingHours: '22:00 - 04:00',
+      closingTime: '04:00',
+      description:
+          'Renowned nightclub with multiple dance floors and a diverse range of music genres.',
+      price: 30,
+      reviews: ['Legendary club!', 'Fantastic DJ lineup.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 3,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Nightlife',
+      name: 'Holland Village',
+      location: 'Holland Avenue, Singapore',
+      visitingHours: '22:00 - 04:00',
+      closingTime: '04:00',
+      description:
+          'Bohemian neighborhood with a variety of bars, pubs, and live music venues.',
+      price: 0,
+      reviews: ['Lively nightlife!', 'Local charm.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Nightlife',
+      name: '1-Altitude Gallery & Bar',
+      location: '1 Raffles Place, Singapore',
+      visitingHours: '15:00 - 22:00',
+      closingTime: '22:00',
+      description:
+          'Tallest rooftop bar in Singapore with stunning views of the city skyline.',
+      price: 35,
+      reviews: ['Unbeatable views!', 'Chic ambiance.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 2,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
+    Location(
+      category: 'Nightlife',
+      name: 'Marina Bay Sands Casino',
+      location: '10 Bayfront Avenue, Singapore',
+      visitingHours: '00:00 - 24:00',
+      closingTime: '24:00',
+      description:
+          'World-class casino located at the iconic Marina Bay Sands complex.',
+      price: 0,
+      reviews: ['Exciting gaming!', 'Luxurious experience.'],
+      preferredTime: 'Night',
+      priority: '3',
+      duration: 3,
+      image:
+          'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+    ),
 ];
