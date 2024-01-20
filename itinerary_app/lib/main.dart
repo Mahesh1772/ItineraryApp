@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
+      'category': 'Places to eat',
       'name': 'Chinatown Complex Food Centre',
       'location': '335 Smith Street, Singapore',
       'visitingHours': '10:00 - 21:00',
@@ -50,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'image': 'https://uplofad.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
       },
     {
+      'category': 'Places to eat',
       'name': 'Newton Food Centre',
       'location': '500 Clemenceau Avenue North, Singapore',
       'visitingHours': '10:00 - 21:00',
