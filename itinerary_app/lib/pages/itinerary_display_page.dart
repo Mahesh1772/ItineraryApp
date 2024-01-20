@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/models/selected_places.dart';
+import 'package:itinerary_app/components/neumorphic_box.dart';
 import 'package:itinerary_app/pages/timeline_tile.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ItineraryPage extends StatefulWidget {
@@ -77,26 +78,52 @@ class _ItineraryPageState extends State<ItineraryPage> {
     return Consumer<SelectedPlaces>(
       builder: (context, value, child) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 25,
-          ),
-          child: ListView.builder(
-            itemCount: value.getSelectedPlaces().length,
-            itemBuilder: (context, index) {
-              //get individual place
-              Location location = value.getSelectedPlaces()[index];
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: NeumorphicBox(
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back_ios_new, size: 25.sp),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 25,
+                ),
+                child: SizedBox(
+                  height: 850.h,
+                  child: ListView.builder(
+                    itemCount: value.getSelectedPlaces().length,
+                    itemBuilder: (context, index) {
+                      //get individual place
+                      Location location = value.getSelectedPlaces()[index];
 
-              return MyTimeLineTile(
-                start: widget._itinerary[index].start,
-                end: widget._itinerary[index].end,
-                category: widget._itinerary[index].category,
-                isFirst: widget._itinerary[index].value1,
-                isLast: widget._itinerary[index].value2,
-                isPast: widget._itinerary[index].value3,
-                itinerary: widget._itinerary[index].name,
-              );
-            },
+                      return MyTimeLineTile(
+                        start: widget._itinerary[index].start,
+                        end: widget._itinerary[index].end,
+                        category: widget._itinerary[index].category,
+                        isFirst: widget._itinerary[index].value1,
+                        isLast: widget._itinerary[index].value2,
+                        isPast: widget._itinerary[index].value3,
+                        itinerary: widget._itinerary[index].name,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
