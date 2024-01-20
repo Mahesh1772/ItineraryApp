@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:itinerary_app/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
+      theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
 }
@@ -43,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'description':
           'Stylish rooftop bar and club offering panoramic views of the city skyline and a sophisticated nightlife experience.',
       'image':
-          "https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/history/national-museum-of-singapore-carousel01-rect.jpeg",
+          "https://daniaexperiences.files.wordpress.com/2023/07/img_3474-800x600-1.jpg?w=800",
       'price': 0, // Numerical value for price
       'reviews': ['Incredible cityscape!', 'Elegant ambiance.'],
       'preferredTime': 'Morning',
