@@ -7,12 +7,18 @@ class MyTimeLineTile extends StatelessWidget {
   final bool isLast;
   final bool isPast;
   final String itinerary;
+  final String start;
+  final String end;
+  final category;
   const MyTimeLineTile({
     super.key,
     required this.isFirst,
     required this.isLast,
     required this.isPast,
     required this.itinerary,
+    required this.category,
+    required this.start, 
+    required this.end,
   });
 
   @override
@@ -34,7 +40,12 @@ class MyTimeLineTile extends StatelessWidget {
             color: isPast ? Colors.white : Colors.deepPurple.shade100,
           ),
         ),
-        endChild: ItineraryTile(itinerary: itinerary),
+        endChild: ItineraryTile(
+          start: start,
+          end: end,
+          itinerary: itinerary,
+          category: category,
+        ),
       ),
     );
   }
