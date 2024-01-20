@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itinerary_app/pages/itenary_tiles.dart';
+import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class MyTimeLineTile extends StatelessWidget {
@@ -31,7 +31,7 @@ class MyTimeLineTile extends StatelessWidget {
           color: isPast ? Colors.deepPurple : Colors.deepPurple.shade100,
           iconStyle: IconStyle(
             iconData: Icons.done,
-            color: isPast ? Colors.white  : Colors.deepPurple.shade100,
+            color: isPast ? Colors.white : Colors.deepPurple.shade100,
           ),
         ),
         endChild: ItineraryTile(itinerary: itinerary),

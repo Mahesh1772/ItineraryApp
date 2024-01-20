@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itinerary_app/pages/itenary_tiles.dart';
+import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:itinerary_app/pages/timeline_tile.dart';
 
 class ItineraryPage extends StatefulWidget {

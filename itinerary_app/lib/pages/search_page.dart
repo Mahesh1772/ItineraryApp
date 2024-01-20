@@ -7,7 +7,15 @@ import 'package:itinerary_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  SearchPage(
+      {super.key,
+      required this.startDate,
+      required this.startTime,
+      required this.endTime});
+
+  late String startDate;
+  late String startTime;
+  late String endTime;
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -22,6 +30,7 @@ class _SearchPageState extends State<SearchPage> {
     'Park',
     'Nightlife',
     'Special Attraction',
+    'Restaurant / Bar',
   ];
 
   List<bool> isSelectedList =
@@ -31,6 +40,9 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.startDate);
+    print(widget.startTime);
+    print(widget.endTime);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
@@ -38,17 +50,33 @@ class _SearchPageState extends State<SearchPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: NeumorphicBox(
-                child: IconButton(
-                  icon: Icon(Icons.brightness_4, size: 30.sp),
-                  onPressed: () {
-                    Provider.of<ThemeProvider>(context, listen: false)
-                        .toggleTheme();
-                  },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: NeumorphicBox(
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_new, size: 25.sp),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: NeumorphicBox(
+                    child: IconButton(
+                      icon: Icon(Icons.brightness_4, size: 30.sp),
+                      onPressed: () {
+                        Provider.of<ThemeProvider>(context, listen: false)
+                            .toggleTheme();
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 25.w),
@@ -64,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
                         color: Theme.of(context).colorScheme.secondary),
                   ),
                   Text(
-                    "a new world",
+                    "a new world.",
                     style: TextStyle(
                         fontFamily: 'Gilroy',
                         fontSize: 40.sp,
@@ -208,7 +236,7 @@ class _SearchPageState extends State<SearchPage> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.2.w / 1.5.h),
                 itemBuilder: (context, index) {
-                  return PlacesTile();
+                  return const PlacesTile();
                 },
               ),
             ),

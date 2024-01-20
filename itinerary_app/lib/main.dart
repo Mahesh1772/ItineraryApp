@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:itinerary_app/pages/home_page.dart';
 import 'package:itinerary_app/pages/search_page.dart';
 import 'package:itinerary_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,11 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false, // remove debug banner
-        home: SearchPage(),
+        home: HomePage(
+          startDate: "Date:",
+          startTime: "Start Time:",
+          endTime: "End Time:",
+        ),
         theme: Provider.of<ThemeProvider>(context).themeData,
       ),
       designSize: const Size(450, 1000),
