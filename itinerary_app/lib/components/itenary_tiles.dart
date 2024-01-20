@@ -50,7 +50,12 @@ class ItineraryTile extends StatelessWidget {
   }
 
   final String category;
-  ItineraryTile({super.key, required this.itinerary, required this.category, required this.start, required this.end});
+  ItineraryTile(
+      {super.key,
+      required this.itinerary,
+      required this.category,
+      required this.start,
+      required this.end});
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +88,8 @@ class ItineraryTile extends StatelessWidget {
               ),
               subtitle: Text(category),
               trailing: Column(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceEvenly, // Aligns the times vertically
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceEvenly, // Aligns the times vertically
                 children: [
                   Text(
                     start, // Start time

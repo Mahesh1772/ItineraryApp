@@ -27,16 +27,22 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   void addToSelectedPlaces(Location location) {
-    String selectedCategory;
-
-    Provider.of<SelectedPlaces>(context, listen: false)
-        .addToSelectedPlaces(location);
+    var selectedPlacesProvider =
+        Provider.of<SelectedPlaces>(context, listen: false);
+    bool tooManyPlaces = selectedPlacesProvider.getSelectedPlaces().length > 4;
+    selectedPlacesProvider.addToSelectedPlaces(location, tooManyPlaces);
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Added to Itinerary'),
-        content: Text('Added ${location.name} to Itinerary'),
+        title: Text(
+          tooManyPlaces ? 'Too Many Places!!' : 'Added to Itinerary',
+        ),
+        content: Text(
+          tooManyPlaces
+              ? 'You have selected too many places.'
+              : 'Added ${location.name} to Itinerary',
+        ),
         actions: [
           TextButton(
             onPressed: () {

@@ -104,23 +104,34 @@ class _ItineraryPageState extends State<ItineraryPage> {
                 ),
                 child: SizedBox(
                   height: 850.h,
-                  child: ListView.builder(
-                    itemCount: value.getSelectedPlaces().length,
-                    itemBuilder: (context, index) {
-                      //get individual place
-                      Location location = value.getSelectedPlaces()[index];
-                      print(location);
-                      return MyTimeLineTile(
-                        start: widget._itinerary[index].start,
-                        end: widget._itinerary[index].end,
-                        category: location.category,
-                        isFirst: widget._itinerary[index].value1,
-                        isLast: widget._itinerary[index].value2,
-                        isPast: widget._itinerary[index].value3,
-                        itinerary: location.name,
-                      );
-                    },
-                  ),
+                  child: value.getSelectedPlaces().length == 0
+                      ? Center(
+                          child: Text(
+                            'No places selected!',
+                            style: TextStyle(
+                                fontSize: 25.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        )
+                      : ListView.builder(
+                          itemCount: value.getSelectedPlaces().length,
+                          itemBuilder: (context, index) {
+                            //get individual place
+                            Location location =
+                                value.getSelectedPlaces()[index];
+                            print(value.getSelectedPlaces().length);
+                            return MyTimeLineTile(
+                              start: widget._itinerary[index].start,
+                              end: widget._itinerary[index].end,
+                              category: location.category,
+                              isFirst: index == 0 ? true : false,
+                              isLast: index == value.getSelectedPlaces().length-1 ? true : false,
+                              isPast: widget._itinerary[index].value3,
+                              itinerary: location.name,
+                            );
+                          },
+                        ),
                 ),
               ),
             ],

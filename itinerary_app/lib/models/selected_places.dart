@@ -470,13 +470,15 @@ class SelectedPlaces extends ChangeNotifier {
   }
 
   //add item to selection "cart"
-  void addToSelectedPlaces(Location place) {
-    _selectedPlaces.add(place);
-    notifyListeners();
+  void addToSelectedPlaces(Location place, tooManyPlaces) {
+    if (!tooManyPlaces) {
+      _selectedPlaces.add(place);
+      notifyListeners();
+    }
   }
 
   //remove item from selection "cart"
-  void removeFromSelectedPlaces(Location place) {
+  void removeFromSelectedPlaces(Location place, tooManyPlaces) {
     _selectedPlaces.remove(place);
     notifyListeners();
   }
