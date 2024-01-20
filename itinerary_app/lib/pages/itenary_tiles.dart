@@ -9,16 +9,17 @@ class ItineraryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 100.0,
-        right: 20,
-        top: 20,
-        bottom: 15,
+        left: 30.0,
+        right: 10,
+        top: 10,
       ),
       child: NeumorphicBox(
-        child: ListTile(
-          leading: Icon(Icons.flight),
-          title: Text(itinerary),
-          subtitle: Text('Flight from Singapore to Tokyo'),
+        child: Center(
+          child: ListTile(
+            leading: Icon(Icons.flight),
+            title: Text(itinerary),
+            subtitle: Text('Flight from Singapore to Bangkok'),
+          ),
         ),
       ),
     );
