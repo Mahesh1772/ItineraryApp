@@ -32,6 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Amazing view!', 'Must-visit restaurant.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'name': 'Chinatown Complex Food Centre',
@@ -44,7 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Amazing food!', 'Must-visit restaurant.'],
       'preferredTime': 'Evening',
       'priority': '3',
-    },
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',    },
     {
       'name': 'Newton Food Centre',
       'location': '500 Clemenceau Avenue North, Singapore',
@@ -56,6 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Amazing Food!', 'Must-visit restaurant.'],
       'preferredTime': 'Evening',
       'priority': '3',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     // Monuments
     {
@@ -70,6 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Amazing view!', 'Must-visit landmark.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Monument',
@@ -83,6 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Beautiful architecture!', 'Spiritual experience.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Monument',
@@ -96,6 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Educational and engaging!', 'Rich collection.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Monument',
@@ -109,6 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Art lover\'s paradise!', 'Diverse exhibitions.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Monument',
@@ -135,6 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Rich history!', 'Great for history buffs.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Monument',
@@ -148,6 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Solemn tribute!', 'Quiet reflection.'],
       'preferredTime': 'Full Day',
       'priority': '4',
+      'duration': 3,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     // Add more monuments...
 
@@ -164,6 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Breathtaking views!', 'Must-see attractions.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -177,6 +196,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Fun-filled island!', 'Great for families.'],
       'preferredTime': 'Full Day',
       'priority': '4',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -190,6 +211,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Spectacular views!', 'Romantic experience.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -202,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'price': 21,
       'reviews': ['Inspiring exhibits!', 'Family-friendly.'],
       'preferredTime': 'Morning',
-      'priority': '1',
+      'priority': '2',
     },
     {
       'category': 'Special Attraction',
@@ -216,6 +239,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Unique experience!', 'Cultural exploration.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -229,6 +254,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Artistic masterpiece!', 'Cultural immersion.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -242,6 +269,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Educational and fun!', 'Great for families.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     // Add more special attractions...
 
@@ -258,6 +287,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Green oasis!', 'Perfect for nature lovers.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Park',
@@ -271,6 +302,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Beachside fun!', 'Great for outdoor activities.'],
       'preferredTime': 'Full Day',
       'priority': '4',
+      'duration': 1,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Park',
@@ -284,6 +317,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Relaxing atmosphere!', 'Great for picnics.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 2,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Park',
@@ -297,6 +332,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Serene nature walk!', 'Historical interest.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
+      'duration': 3,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Park',
@@ -310,6 +347,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Botanical delight!', 'Perfect for plant enthusiasts.'],
       'preferredTime': 'Morning',
       'priority': '1',
+      'duration': 2,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Park',
@@ -323,6 +362,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Family-friendly!', 'Relaxing atmosphere.'],
       'preferredTime': 'Full Day',
       'priority': '4',
+      'duration': 2,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     // Add more parks...
 
@@ -339,6 +380,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Lively atmosphere!', 'Great for partygoers.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 3,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Nightlife',
@@ -352,6 +395,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Legendary club!', 'Fantastic DJ lineup.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 3,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Nightlife',
@@ -365,6 +410,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Lively nightlife!', 'Local charm.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 2,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Nightlife',
@@ -378,6 +425,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Unbeatable views!', 'Chic ambiance.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 2,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     {
       'category': 'Nightlife',
@@ -391,6 +440,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Exciting gaming!', 'Luxurious experience.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'duration': 3,
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
     },
     // Add more nightlife locations...
   ];
