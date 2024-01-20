@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'closingTime': '21:00',
       'description':
           'Hawker center offering a variety of local dishes, including Hainanese chicken rice and laksa.',
-      'price': '30',
+      'price': 30,
       'reviews': ['Amazing view!', 'Must-visit restaurant.'],
       'preferredTime': 'Afternoon',
       'priority': '2',
@@ -42,12 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
       'closingTime': '21:00',
       'description':
           'Large hawker center in Chinatown with a wide array of affordable and delicious local food options.',
-      'price': 'Budget-friendly',
+      'price': 10,
       'reviews': ['Amazing food!', 'Must-visit restaurant.'],
       'preferredTime': 'Evening',
       'priority': '3',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',    },
+      'image': 'https://uplofad.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      },
     {
       'name': 'Newton Food Centre',
       'location': '500 Clemenceau Avenue North, Singapore',
@@ -55,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'closingTime': '21:00',
       'description':
           'Popular open-air hawker center known for its seafood and local delights.',
-      'price': 'Moderate',
+      'price': 10,
       'reviews': ['Amazing Food!', 'Must-visit restaurant.'],
       'preferredTime': 'Evening',
       'priority': '3',
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'name': 'Merlion Park',
       'location': 'Fullerton Road, Singapore',
       'visitingHours': '00:00 - 23:00',
-      'closingTime': '24:00',
+      'closingTime': '23:00',
       'description':
           'Iconic statue of a mythical creature with a lion\'s head and a fish\'s tail, overlooking Marina Bay.',
       'price': 0,
@@ -83,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'name': 'Sri Mariamman Temple',
       'location': '244 South Bridge Road, Singapore',
       'visitingHours': '07:00 - 12:00',
-      'closingTime': '21:00',
+      'closingTime': '12:00',
       'description':
           'Oldest Hindu temple in Singapore, known for its stunning Dravidian architecture and intricate sculptures.',
       'price': 0,
@@ -106,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'preferredTime': 'Afternoon',
       'priority': '2',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'image': 'https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/history/national-museum-of-singapore-carousel01-rect.jpeg',
     },
     {
       'category': 'Monument',
@@ -121,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'preferredTime': 'Afternoon',
       'priority': '2',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'image': 'https://www.thebestsingapore.com/wp-content/uploads/2015/07/Singapore-Art-Museum.jpg',
     },
     {
       'category': 'Monument',
@@ -135,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Cultural hub!', 'Impressive architecture.'],
       'preferredTime': 'Night',
       'priority': '3',
+      'image': 'https://www.esplanade.com/-/media/Esplanade/Images/Visit-Esplanade/Tours-and-Experiences/garden-tour-01.ashx?rev=be0385e20e7a40d585fc92c466b7209c&hash=EB8FB0E59B4E8D12B697FBB6C605A635'
     },
     {
       'category': 'Monument',
@@ -149,14 +151,14 @@ class _MyHomePageState extends State<MyHomePage> {
       'preferredTime': 'Morning',
       'priority': '1',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'image': 'https://onecms-res.cloudinary.com/image/upload/s--av_yTgnt--/f_auto,q_auto/c_fill,g_auto,h_676,w_1200/v1/mediacorp/cna/image/2022/02/15/6-inch_breech_loading_bl_gun_emplacement_with_underground_magazine_image_courtesy_of_national_heritage_board.jpg?itok=kXcnDSoW'
     },
     {
       'category': 'Monument',
       'name': 'Civilian War Memorial',
       'location': 'Beach Road, Singapore',
       'visitingHours': '00:00 - 24:00',
-      'closingTime': '24:00',
+      'closingTime': '23:59',
       'description':
           'Memorial honoring civilians who perished during the Japanese occupation of Singapore.',
       'price': 0,
@@ -182,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'preferredTime': 'Night',
       'priority': '3',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'image': 'https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/nature-wildlife/gbtb/carousel1-940x940.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -196,8 +198,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Fun-filled island!', 'Great for families.'],
       'preferredTime': 'Full Day',
       'priority': '4',
-      'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'duration': 3,
+      'image': 'https://a.cdn-hotels.com/gdcs/production187/d438/72aa3862-1a1d-4005-a030-a331431c8b4f.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -212,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'preferredTime': 'Night',
       'priority': '3',
       'duration': 1,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Singapore_Skyline_2019-10.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/5/53/Dikaiosp_210819_6963.jpg',
     },
     {
       'category': 'Special Attraction',
@@ -226,6 +228,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'reviews': ['Inspiring exhibits!', 'Family-friendly.'],
       'preferredTime': 'Morning',
       'priority': '2',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/5/53/Dikaiosp_210819_6963.jpg',
+
     },
     {
       'category': 'Special Attraction',
