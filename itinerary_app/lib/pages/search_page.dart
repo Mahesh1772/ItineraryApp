@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/components/neumorphic_box.dart';
 import 'package:itinerary_app/components/places_tile.dart';
 import 'package:itinerary_app/pages/itinerary_display_page.dart';
@@ -36,8 +37,23 @@ class _SearchPageState extends State<SearchPage> {
 
   List<bool> isSelectedList =
       List.filled(8, false); // Initialize the list with all false values
-
+  Map<String, List<Location>> groupedMonuments = {};
   String selectedCategory = 'Monument';
+  void groupMonuments() {
+    // Group monuments based on morning, afternoon, and evening
+    for (var monument in monuments) {
+      String preferredTime = monument.preferredTime;
+      if (!groupedMonuments.containsKey(preferredTime)) {
+        groupedMonuments[preferredTime] = [];
+      }
+      groupedMonuments[preferredTime]!.add(monument);
+      groupedMonuments[preferredTime]!
+          .sort((a, b) => a.closingTime.compareTo(b.closingTime));
+    }
+    groupedMonuments.forEach((key, value) {
+      value.sort((a, b) => b.priority.compareTo(a.priority));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -232,23 +248,17 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(height: 10.h),
             Expanded(
               child: GridView.builder(
-                itemCount: 3,
+                itemCount: monuments.length,
                 padding: EdgeInsets.all(12.sp),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
                 itemBuilder: (context, index) {
                   return PlacesTile(
-                      isSelected: false,
-                      name: "name",
-                      category: "category",
-                      location: "location",
-                      visitingHours: "visitingHours",
-                      closingTime: "closingTime",
-                      description: "description",
-                      price: "price",
-                      reviews: "reviews",
-                      preferredTime: "preferredTime",
-                      image: "image");
+                    location: monuments[index],
+                    onTap: () {
+                      _showPlaceDetails(context, monuments[index]); 
+                    },
+                  );
                 },
               ),
             ),
@@ -258,3 +268,31 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
+
+  void _showPlaceDetails(BuildContext context, Location place) { 
+    showDialog( 
+      context: context, 
+      builder: (BuildContext context) { 
+        return AlertDialog( 
+          title: Text(place.name), 
+          content: Column( 
+            crossAxisAlignment: CrossAxisAlignment.start, 
+            mainAxisSize: MainAxisSize.min, 
+            children: [ 
+              Text('Location: ${place.location}'), 
+              Text('Description: ${place.description}'), 
+              // ... add other fields as needed 
+            ], 
+          ), 
+          actions: [ 
+            TextButton( 
+              onPressed: () { 
+                Navigator.of(context).pop(); 
+              }, 
+              child: Text('Close'), 
+            ), 
+          ], 
+        ); 
+      }, 
+    ); 
+  } 

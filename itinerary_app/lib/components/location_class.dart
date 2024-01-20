@@ -28,7 +28,7 @@ class Location {
   });
 }
 
-List<Location> locations = [
+List<Location> monuments = [
   Location(
     category: 'Places to eat',
     name: 'Maxwell Food Centre',

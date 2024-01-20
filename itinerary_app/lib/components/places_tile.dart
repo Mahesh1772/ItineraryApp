@@ -1,35 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/components/neumorphic_box.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 
+/*
 class PlacesTile extends StatefulWidget {
-  PlacesTile(
-      {super.key,
-      required this.isSelected,
-      required this.name,
-      required this.category,
-      required this.location,
-      required this.visitingHours,
-      required this.closingTime,
-      required this.description,
-      required this.price,
-      required this.reviews,
-      required this.preferredTime,
-      required this.image});
-
-  final String name;
-  final String category;
-  final String location;
-  final String visitingHours;
-  final String closingTime;
-  final String description;
-  final String price;
-  final String reviews;
-  late String preferredTime;
-  final String image;
-  late bool isSelected;
-
   @override
   State<PlacesTile> createState() => _PlacesTileState();
 }
@@ -105,4 +81,46 @@ Widget rollingIconBuilder(bool value, Size iconSize, bool foreground) {
     data,
     size: iconSize.shortestSide,
   );
+}
+*/
+class PlacesTile extends StatelessWidget {
+  final Location location;
+  final VoidCallback onTap;
+
+  const PlacesTile({
+    required this.location,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+              child: Image.network(
+                location.image,
+                height: 110,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            ListTile(
+              title: Text(location.name,
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
+            // You can add more widgets here to display additional information
+          ],
+        ),
+      ),
+    );
+  }
 }
