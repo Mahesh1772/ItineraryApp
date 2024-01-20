@@ -18,20 +18,16 @@ class _SearchPageState extends State<SearchPage> {
   String searchText = '';
 
   List<String> categories = [
-    'Name',
-    'Rank',
-    'Company',
-    'Section',
-    'Platoon',
-    'Ration',
-    'Blood',
-    'Appointment',
+    'Monument',
+    'Park',
+    'Nightlife',
+    'Special Attraction',
   ];
 
   List<bool> isSelectedList =
       List.filled(8, false); // Initialize the list with all false values
 
-  String selectedCategory = 'name';
+  String selectedCategory = 'Monument';
 
   @override
   Widget build(BuildContext context) {
@@ -78,33 +74,32 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             ),
-            // InkWell(
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => const ItineraryPage(),
-            //       ),
-            //     );
-            //   },
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       color: Theme.of(context).colorScheme.primary,
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //     padding: const EdgeInsets.all(20),
-            //     child: Center(
-            //       child: Text(
-            //         'Show Itinerary Page',
-            //         style: TextStyle(
-            //           fontSize: 24,
-            //           color: Theme.of(context).colorScheme.secondary,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ItineraryPage(),
+                  ),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: Text(
+                    'Show Itinerary Page',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
               child: NeumorphicBox(
