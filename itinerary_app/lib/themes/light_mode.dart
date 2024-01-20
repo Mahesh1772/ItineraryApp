@@ -6,4 +6,5 @@ ThemeData lightMode = ThemeData(
       primary: Colors.white,
       secondary: Colors.black,
       tertiary: Color(0x1EA585)),
+  fontFamily: 'Gilroy',
 );
