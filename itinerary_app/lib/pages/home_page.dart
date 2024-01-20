@@ -55,33 +55,32 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          // InkWell(
-          //   onTap: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => const ItineraryPage(),
-          //       ),
-          //     );
-          //   },
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //       color: Theme.of(context).colorScheme.primary,
-          //       borderRadius: BorderRadius.circular(10),
-          //     ),
-          //     padding: const EdgeInsets.all(20),
-          //     child: Center(
-          //       child: Text(
-          //         'Show Itinerary Page',
-          //         style: TextStyle(
-          //           fontSize: 24,
-          //           color: Theme.of(context).colorScheme.secondary,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ItineraryPage(),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(20),
+              child: Center(
+                child: Text(
+                  'Show Itinerary Page',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Center(child: NeumorphicBox(child: Icon(Icons.search))),
         ],
       ),

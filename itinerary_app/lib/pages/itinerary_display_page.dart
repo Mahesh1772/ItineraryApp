@@ -20,6 +20,7 @@ class _ItineraryPageState extends State<ItineraryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: ListView.builder(
         itemCount: widget._itinerary.length,
         itemBuilder: (context, index) {
