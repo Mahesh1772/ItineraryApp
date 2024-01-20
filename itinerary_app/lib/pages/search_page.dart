@@ -234,7 +234,7 @@ class _SearchPageState extends State<SearchPage> {
                 itemCount: 3,
                 padding: EdgeInsets.all(12.sp),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 1.2.w / 1.5.h),
+                    crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
                 itemBuilder: (context, index) {
                   return const PlacesTile();
                 },
