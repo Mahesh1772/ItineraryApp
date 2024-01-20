@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:itinerary_app/components/itenary_tiles.dart';
+import 'package:itinerary_app/components/neumorphic_box.dart';
 import 'package:itinerary_app/pages/timeline_tile.dart';
 import 'package:intl/intl.dart';
 
@@ -7,16 +9,62 @@ class ItineraryPage extends StatefulWidget {
   ItineraryPage({super.key});
 
   final List<ItineraryItem> _itinerary = [
-    ItineraryItem(name: 'Flight', value1: true, value2: false, value3: true, category: 'Nightlife', start: '10:00', end: '11:00'),
-    ItineraryItem(name: 'Hotel', value1: false, value2: false, value3: true, category: 'Monument' , start: '11:00', end: '12:00'),
     ItineraryItem(
-        name: 'Attraction', value1: false, value2: false, value3: true, category: 'Park', start: '12:00', end: '13:00'),
-    ItineraryItem(name: 'Food', value1: false, value2: false, value3: true, category: 'Special Attraction',   start: '13:00', end: '14:00'),
+        name: 'Flight',
+        value1: true,
+        value2: false,
+        value3: true,
+        category: 'Nightlife',
+        start: '10:00',
+        end: '11:00'),
     ItineraryItem(
-        name: 'Shopping', value1: false, value2: false, value3: false, category: 'Restaurant/Bar', start: '14:00', end: '15:00'),
+        name: 'Hotel',
+        value1: false,
+        value2: false,
+        value3: true,
+        category: 'Monument',
+        start: '11:00',
+        end: '12:00'),
     ItineraryItem(
-        name: 'Transport', value1: false, value2: false, value3: false, category: 'Special Attraction', start: '15:00', end: '16:00'),
-    ItineraryItem(name: 'Others', value1: false, value2: true, value3: false, category: 'Monument', start: '16:00', end: '17:00'),
+        name: 'Attraction',
+        value1: false,
+        value2: false,
+        value3: true,
+        category: 'Park',
+        start: '12:00',
+        end: '13:00'),
+    ItineraryItem(
+        name: 'Food',
+        value1: false,
+        value2: false,
+        value3: true,
+        category: 'Special Attraction',
+        start: '13:00',
+        end: '14:00'),
+    ItineraryItem(
+        name: 'Shopping',
+        value1: false,
+        value2: false,
+        value3: false,
+        category: 'Restaurant/Bar',
+        start: '14:00',
+        end: '15:00'),
+    ItineraryItem(
+        name: 'Transport',
+        value1: false,
+        value2: false,
+        value3: false,
+        category: 'Special Attraction',
+        start: '15:00',
+        end: '16:00'),
+    ItineraryItem(
+        name: 'Others',
+        value1: false,
+        value2: true,
+        value3: false,
+        category: 'Monument',
+        start: '16:00',
+        end: '17:00'),
   ];
   @override
   State<ItineraryPage> createState() => _ItineraryPageState();
@@ -27,23 +75,49 @@ class _ItineraryPageState extends State<ItineraryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 25,
-        ),
-        child: ListView.builder(
-          itemCount: widget._itinerary.length,
-          itemBuilder: (context, index) {
-            return MyTimeLineTile(
-              start: widget._itinerary[index].start,
-              end: widget._itinerary[index].end,
-              category: widget._itinerary[index].category,
-              isFirst: widget._itinerary[index].value1,
-              isLast: widget._itinerary[index].value2,
-              isPast: widget._itinerary[index].value3,
-              itinerary: widget._itinerary[index].name,
-            );
-          },
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: NeumorphicBox(
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_new, size: 25.sp),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 25,
+              ),
+              child: SizedBox(
+                height: 850.h,
+                child: ListView.builder(
+                  itemCount: widget._itinerary.length,
+                  itemBuilder: (context, index) {
+                    return MyTimeLineTile(
+                      start: widget._itinerary[index].start,
+                      end: widget._itinerary[index].end,
+                      category: widget._itinerary[index].category,
+                      isFirst: widget._itinerary[index].value1,
+                      isLast: widget._itinerary[index].value2,
+                      isPast: widget._itinerary[index].value3,
+                      itinerary: widget._itinerary[index].name,
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -57,7 +131,7 @@ class ItineraryItem {
   final bool value3;
   final String category;
   final String start;
-  final String end; 
+  final String end;
   ItineraryItem({
     required this.name,
     required this.value1,
