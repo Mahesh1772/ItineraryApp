@@ -6,6 +6,7 @@ import 'package:itinerary_app/pages/itinerary_display_page.dart';
 import 'package:itinerary_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class SearchPage extends StatefulWidget {
   SearchPage(
       {super.key,
@@ -236,7 +237,7 @@ class _SearchPageState extends State<SearchPage> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
                 itemBuilder: (context, index) {
-                  return const PlacesTile();
+                  return PlacesTile(isSelected: false, name: "name", category: "category", location: "location", visitingHours: "visitingHours", closingTime: "closingTime", description: "description", price: "price", reviews: "reviews", preferredTime: "preferredTime", image: "image")
                 },
               ),
             ),
