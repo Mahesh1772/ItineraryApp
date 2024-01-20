@@ -109,15 +109,15 @@ class _ItineraryPageState extends State<ItineraryPage> {
                     itemBuilder: (context, index) {
                       //get individual place
                       Location location = value.getSelectedPlaces()[index];
-
+                      print(location);
                       return MyTimeLineTile(
                         start: widget._itinerary[index].start,
                         end: widget._itinerary[index].end,
-                        category: widget._itinerary[index].category,
+                        category: location.category,
                         isFirst: widget._itinerary[index].value1,
                         isLast: widget._itinerary[index].value2,
                         isPast: widget._itinerary[index].value3,
-                        itinerary: widget._itinerary[index].name,
+                        itinerary: location.name,
                       );
                     },
                   ),

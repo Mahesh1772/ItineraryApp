@@ -25,7 +25,7 @@ class ItineraryTile extends StatelessWidget {
         return colors[2];
       case 'Special Attraction':
         return colors[3];
-      case 'Restaurant/Bar':
+      case 'Places to eat':
         return colors[4];
       default:
         return Colors.black; // Default color for unknown categories
@@ -42,7 +42,7 @@ class ItineraryTile extends StatelessWidget {
         return Icons.nightlife;
       case 'Special Attraction':
         return Icons.attractions;
-      case 'Restaurant/Bar':
+      case 'Places to eat':
         return Icons.restaurant;
       default:
         return Icons.help; // Default icon for unknown categories
