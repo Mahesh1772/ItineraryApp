@@ -9,12 +9,18 @@ class PlacesTile extends StatelessWidget {
   final Location location;
   final VoidCallback onTap;
   final Function()? onPlusTap;
+  final String startDate;
+  final String startTime;
+  final String endTime;
 
   const PlacesTile({
     super.key,
     required this.location,
     required this.onTap,
     required this.onPlusTap,
+    required this.startDate,
+    required this.startTime,
+    required this.endTime,
   });
 
   @override

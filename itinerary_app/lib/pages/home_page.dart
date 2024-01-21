@@ -108,7 +108,10 @@ class _HomePageState extends State<HomePage> {
           DateTime now = DateTime.now();
           DateTime dt =
               DateTime(now.year, now.month, now.day, value.hour, value.minute);
-          widget.startTime = DateFormat.jm().format(dt);
+          widget.startTime = DateFormat('HH:mm').format(dt);
+          // 24-hour format without colon
+
+          print(widget.startTime);
         }
       });
     });
@@ -143,7 +146,9 @@ class _HomePageState extends State<HomePage> {
           DateTime now = DateTime.now();
           DateTime dt =
               DateTime(now.year, now.month, now.day, value.hour, value.minute);
-          widget.endTime = DateFormat.jm().format(dt);
+            String time = "${dt.hour}:${dt.minute}";
+          widget.endTime = time;
+              
         }
       });
     });
@@ -159,7 +164,7 @@ class _HomePageState extends State<HomePage> {
 
           if (widget.startDate.isEmpty ||
               widget.startTime.isEmpty ||
-              widget.endTime.isEmpty) { 
+              widget.endTime.isEmpty) {
             _showSnackBar();
           } else {
             Navigator.push(

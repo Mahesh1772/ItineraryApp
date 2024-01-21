@@ -3,7 +3,7 @@ import 'package:itinerary_app/components/location_class.dart';
 
 class SelectedPlaces extends ChangeNotifier {
   //list of places
-  List<Location> _places = [
+  final List<Location> _places = [
     Location(
       category: 'Places to eat',
       name: 'Maxwell Food Centre',

@@ -11,6 +11,9 @@ class Location {
   final String priority;
   final int duration;
   final String image;
+  String startTime = '';
+  String endTime = '';
+  String startDate = '';
 
   Location({
     required this.category,

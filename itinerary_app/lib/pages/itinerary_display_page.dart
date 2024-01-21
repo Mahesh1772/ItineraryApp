@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/models/selected_places.dart';
@@ -8,66 +9,16 @@ import 'package:itinerary_app/pages/timeline_tile.dart';
 import 'package:provider/provider.dart';
 
 class ItineraryPage extends StatefulWidget {
-  ItineraryPage({super.key});
+  ItineraryPage(
+      {super.key,
+      required this.startDate,
+      required this.startTime,
+      required this.endTime});
 
-  final List<ItineraryItem> _itinerary = [
-    ItineraryItem(
-        name: 'Flight',
-        value1: true,
-        value2: false,
-        value3: true,
-        category: 'Nightlife',
-        start: '10:00',
-        end: '11:00'),
-    ItineraryItem(
-        name: 'Hotel',
-        value1: false,
-        value2: false,
-        value3: true,
-        category: 'Monument',
-        start: '11:00',
-        end: '12:00'),
-    ItineraryItem(
-        name: 'Attraction',
-        value1: false,
-        value2: false,
-        value3: true,
-        category: 'Park',
-        start: '12:00',
-        end: '13:00'),
-    ItineraryItem(
-        name: 'Food',
-        value1: false,
-        value2: false,
-        value3: true,
-        category: 'Special Attraction',
-        start: '13:00',
-        end: '14:00'),
-    ItineraryItem(
-        name: 'Shopping',
-        value1: false,
-        value2: false,
-        value3: false,
-        category: 'Restaurant/Bar',
-        start: '14:00',
-        end: '15:00'),
-    ItineraryItem(
-        name: 'Transport',
-        value1: false,
-        value2: false,
-        value3: false,
-        category: 'Special Attraction',
-        start: '15:00',
-        end: '16:00'),
-    ItineraryItem(
-        name: 'Others',
-        value1: false,
-        value2: true,
-        value3: false,
-        category: 'Monument',
-        start: '16:00',
-        end: '17:00'),
-  ];
+  final String startDate;
+  final String startTime;
+  final String endTime;
+
   @override
   State<ItineraryPage> createState() => _ItineraryPageState();
 }
@@ -75,6 +26,36 @@ class ItineraryPage extends StatefulWidget {
 class _ItineraryPageState extends State<ItineraryPage> {
   @override
   Widget build(BuildContext context) {
+    var currentStartTime;
+    /*
+    String addHoursToTime(String time, int hours) {
+      // Convert the time string to an integer
+      if (time.length != 5) {
+        time = "0" + time;
+      }
+      print(time);
+
+      DateTime originalTime = DateTime.parse("2022-01-01 " + time + ":00");
+
+      // Add the hours to the time
+      DateTime newTime = originalTime.add(Duration(minutes: hours * 60));
+
+      // Format the resulting time into the original time string format
+      String formattedTime =
+          "${newTime.hour.toString().padLeft(2, '0')}:${newTime.minute.toString().padLeft(2, '0')}";
+
+      return formattedTime;
+    }*/
+
+    final List itineraryItems = [
+      ['1000', '1100'],
+      ['1100', '1300'],
+      ['1300', '1400'],
+      ['1400', '1700'],
+      ['1700', '1900'],
+      ['0700', '0800'],
+    ];
+
     return Consumer<SelectedPlaces>(
       builder: (context, value, child) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -120,14 +101,34 @@ class _ItineraryPageState extends State<ItineraryPage> {
                             //get individual place
                             Location location =
                                 value.getSelectedPlaces()[index];
-                            print(value.getSelectedPlaces().length);
+
+                            /*
+                            if (index == 0) {
+                              currentStartTime = //widget.startTime;
+                                  addHoursToTime(widget.startTime, 0);
+                            } else {
+                              currentStartTime = addHoursToTime(
+                                  value.getSelectedPlaces()[index - 1].endTime,
+                                  0);
+                            }*/
+
+                            // print("Current start time: " +
+                            // currentStartTime.toString() +
+                            // " for " +
+                            // location.name +
+                            // " with duration " +
+                            // location.duration.toString() +
+                            // " hours");
                             return MyTimeLineTile(
-                              start: widget._itinerary[index].start,
-                              end: widget._itinerary[index].end,
+                              start: itineraryItems[index][0],
+                              end: itineraryItems[index][1],
                               category: location.category,
                               isFirst: index == 0 ? true : false,
-                              isLast: index == value.getSelectedPlaces().length-1 ? true : false,
-                              isPast: widget._itinerary[index].value3,
+                              isLast:
+                                  index == value.getSelectedPlaces().length - 1
+                                      ? true
+                                      : false,
+                              isPast: true,
                               itinerary: location.name,
                             );
                           },

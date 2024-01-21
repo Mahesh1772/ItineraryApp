@@ -8,6 +8,7 @@ import 'package:itinerary_app/models/selected_places.dart';
 import 'package:itinerary_app/pages/itinerary_display_page.dart';
 import 'package:itinerary_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class SearchPage extends StatefulWidget {
@@ -157,7 +158,10 @@ class _SearchPageState extends State<SearchPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ItineraryPage(),
+                      builder: (context) => ItineraryPage(
+                          startDate: widget.startDate,
+                          startTime: widget.startTime,
+                          endTime: widget.endTime),
                     ),
                   );
                 },
@@ -320,6 +324,9 @@ class _SearchPageState extends State<SearchPage> {
                       onPlusTap: () {
                         addToSelectedPlaces(location);
                       },
+                      startDate: widget.startDate,
+                      startTime: widget.startTime,
+                      endTime: widget.endTime,
                     );
                   },
                 ),
