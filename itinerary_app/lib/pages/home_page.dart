@@ -25,6 +25,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _isSnackBarActive = false;
+  void _showSnackBar() {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          SnackBar(
+            content: Text(
+                'Please select date and start/end times before proceeding.'),
+            duration: Duration(seconds: 3),
+            onVisible: () {
+              _isSnackBarActive = true;
+            },
+          ),
+        )
+        .closed
+        .then(
+      (reason) {
+        _isSnackBarActive = false;
+      },
+    );
+  }
+
   void _showStartDatePicker() {
     showDatePicker(
       context: context,
@@ -34,6 +55,10 @@ class _HomePageState extends State<HomePage> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light().copyWith(
+              primary: Colors.blue, // selected date color
+              onPrimary: Colors.black, // selected date text color
+            ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context)
@@ -63,29 +88,13 @@ class _HomePageState extends State<HomePage> {
           data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
           child: Theme(
             data: Theme.of(context).copyWith(
-              colorScheme: (Theme.of(context).colorScheme.background ==
-                      const Color.fromARGB(255, 243, 246, 254))
-                  ? ColorScheme.highContrastLight(
-                      primary: const Color.fromARGB(
-                          255, 129, 71, 230), // <-- SEE HERE
-                      onPrimary: Colors.white, // <-- SEE HERE
-                      onSurface: Theme.of(context)
-                          .colorScheme
-                          .tertiary, // <-- SEE HERE
-                    )
-                  : ColorScheme.highContrastDark(
-                      primary: const Color.fromARGB(
-                          255, 129, 71, 230), // <-- SEE HERE
-                      onPrimary: Colors.white, // <-- SEE HERE
-                      onSurface: Theme.of(context)
-                          .colorScheme
-                          .tertiary, // <-- SEE HERE
-                    ),
+              colorScheme: ColorScheme.light().copyWith(
+                primary: Colors.blue, // selected time color
+                onPrimary: Colors.white, // selected time text color
+              ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  foregroundColor: Theme.of(context)
-                      .colorScheme
-                      .tertiary, // button text color
+                  primary: Colors.black, // button text color
                 ),
               ),
             ),
@@ -93,21 +102,16 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       },
-    ).then(
-      ((value) {
-        setState(
-          () {
-            if (value != null) {
-              DateTime now = DateTime.now();
-              DateTime dt = DateTime(
-                  now.year, now.month, now.day, value.hour, value.minute);
-
-              widget.startTime = DateFormat.jm().format(dt);
-            }
-          },
-        );
-      }),
-    );
+    ).then((value) {
+      setState(() {
+        if (value != null) {
+          DateTime now = DateTime.now();
+          DateTime dt =
+              DateTime(now.year, now.month, now.day, value.hour, value.minute);
+          widget.startTime = DateFormat.jm().format(dt);
+        }
+      });
+    });
   }
 
   void _showEndTimePicker() {
@@ -119,29 +123,13 @@ class _HomePageState extends State<HomePage> {
           data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
           child: Theme(
             data: Theme.of(context).copyWith(
-              colorScheme: (Theme.of(context).colorScheme.background ==
-                      const Color.fromARGB(255, 243, 246, 254))
-                  ? ColorScheme.highContrastLight(
-                      primary: const Color.fromARGB(
-                          255, 129, 71, 230), // <-- SEE HERE
-                      onPrimary: Colors.white, // <-- SEE HERE
-                      onSurface: Theme.of(context)
-                          .colorScheme
-                          .tertiary, // <-- SEE HERE
-                    )
-                  : ColorScheme.highContrastDark(
-                      primary: const Color.fromARGB(
-                          255, 129, 71, 230), // <-- SEE HERE
-                      onPrimary: Colors.white, // <-- SEE HERE
-                      onSurface: Theme.of(context)
-                          .colorScheme
-                          .tertiary, // <-- SEE HERE
-                    ),
+              colorScheme: ColorScheme.light().copyWith(
+                primary: Colors.blue, // selected time color
+                onPrimary: Colors.white, // selected time text color
+              ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  foregroundColor: Theme.of(context)
-                      .colorScheme
-                      .tertiary, // button text color
+                  primary: Colors.black, // button text color
                 ),
               ),
             ),
@@ -149,21 +137,16 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       },
-    ).then(
-      ((value) {
-        setState(
-          () {
-            if (value != null) {
-              DateTime now = DateTime.now();
-              DateTime dt = DateTime(
-                  now.year, now.month, now.day, value.hour, value.minute);
-
-              widget.endTime = DateFormat.jm().format(dt);
-            }
-          },
-        );
-      }),
-    );
+    ).then((value) {
+      setState(() {
+        if (value != null) {
+          DateTime now = DateTime.now();
+          DateTime dt =
+              DateTime(now.year, now.month, now.day, value.hour, value.minute);
+          widget.endTime = DateFormat.jm().format(dt);
+        }
+      });
+    });
   }
 
   @override
@@ -172,18 +155,26 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         key: const Key("startSearch"),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return SearchPage(
-                  startDate: widget.startDate,
-                  startTime: widget.startTime,
-                  endTime: widget.endTime,
-                );
-              },
-            ),
-          );
+          if (_isSnackBarActive) return;
+
+          if (widget.startDate.isEmpty ||
+              widget.startTime.isEmpty ||
+              widget.endTime.isEmpty) { 
+            _showSnackBar();
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return SearchPage(
+                    startDate: widget.startDate,
+                    startTime: widget.startTime,
+                    endTime: widget.endTime,
+                  );
+                },
+              ),
+            );
+          }
         },
         child: Icon(
           Icons.navigate_next,
