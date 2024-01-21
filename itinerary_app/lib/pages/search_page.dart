@@ -63,13 +63,14 @@ class _SearchPageState extends State<SearchPage> {
     'Park',
     'Nightlife',
     'Special Attraction',
-    'Restaurant / Bar',
+    'Places to eat',
   ];
 
   List<bool> isSelectedList =
-      List.filled(8, false); // Initialize the list with all false values
+      List.filled(5, false); // Initialize the list with all false values
   Map<String, List<Location>> groupedMonuments = {};
   String selectedCategory = 'Monument';
+
   void groupMonuments() {
     // Group monuments based on morning, afternoon, and evening
     for (var monument in monuments) {
@@ -255,6 +256,10 @@ class _SearchPageState extends State<SearchPage> {
                                     isSelectedList[category.key] =
                                         selected; // Set the selected value to true for the chosen category
 
+                                    // Update the selected category
+                                    selectedCategory =
+                                        (selected ? category.value : null)!;
+
                                     print(selectedCategory);
                                   });
                                 },
@@ -284,12 +289,29 @@ class _SearchPageState extends State<SearchPage> {
               SizedBox(height: 10.h),
               Expanded(
                 child: GridView.builder(
-                  itemCount: monuments.length,
+                  itemCount: value
+                      .getPlaces()
+                      .where((location) =>
+                          selectedCategory == null ||
+                          location.category == selectedCategory)
+                      .length,
                   padding: EdgeInsets.all(12.sp),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, childAspectRatio: 1.1.w / 1.5.h),
                   itemBuilder: (context, index) {
-                    Location location = value.getPlaces()[index];
+                    Location location = value
+                        .getPlaces()
+                        .where((location) =>
+                            selectedCategory == null ||
+                            location.category == selectedCategory)
+                        .toList()[index];
+
+                    // If a category is selected and it doesn't match the item's category, skip this item
+                    if (selectedCategory != null &&
+                        location.category != selectedCategory) {
+                      return Container(); // Return an empty container
+                    }
+
                     return PlacesTile(
                       location: location,
                       onTap: () {
