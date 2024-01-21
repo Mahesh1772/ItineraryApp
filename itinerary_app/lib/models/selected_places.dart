@@ -478,7 +478,7 @@ class SelectedPlaces extends ChangeNotifier {
   }
 
   //remove item from selection "cart"
-  void removeFromSelectedPlaces(Location place, tooManyPlaces) {
+  void removeFromSelectedPlaces(Location place) {
     _selectedPlaces.remove(place);
     notifyListeners();
   }

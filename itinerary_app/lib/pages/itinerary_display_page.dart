@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -5,6 +7,7 @@ import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/models/selected_places.dart';
 import 'package:itinerary_app/components/neumorphic_box.dart';
+import 'package:itinerary_app/pages/saveditinerary_provider.dart';
 import 'package:itinerary_app/pages/timeline_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -23,41 +26,21 @@ class ItineraryPage extends StatefulWidget {
   State<ItineraryPage> createState() => _ItineraryPageState();
 }
 
+final List itinerary = [
+  ['1000', '1100'],
+  ['1100', '1300'],
+  ['1300', '1400'],
+  ['1400', '1700'],
+  ['1700', '1900'],
+];
+
 class _ItineraryPageState extends State<ItineraryPage> {
   @override
   Widget build(BuildContext context) {
-    var currentStartTime;
-    /*
-    String addHoursToTime(String time, int hours) {
-      // Convert the time string to an integer
-      if (time.length != 5) {
-        time = "0" + time;
-      }
-      print(time);
-
-      DateTime originalTime = DateTime.parse("2022-01-01 " + time + ":00");
-
-      // Add the hours to the time
-      DateTime newTime = originalTime.add(Duration(minutes: hours * 60));
-
-      // Format the resulting time into the original time string format
-      String formattedTime =
-          "${newTime.hour.toString().padLeft(2, '0')}:${newTime.minute.toString().padLeft(2, '0')}";
-
-      return formattedTime;
-    }*/
-
-    final List itineraryItems = [
-      ['1000', '1100'],
-      ['1100', '1300'],
-      ['1300', '1400'],
-      ['1400', '1700'],
-      ['1700', '1900'],
-      ['0700', '0800'],
-    ];
-
-    return Consumer<SelectedPlaces>(
-      builder: (context, value, child) => Scaffold(
+    print("final: "+ widget.startTime);
+    print(widget.endTime);
+    return Consumer2<SelectedPlaces, SavedItineraries>(
+      builder: (context, value, SavedItineraries, child) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Column(
@@ -77,6 +60,18 @@ class _ItineraryPageState extends State<ItineraryPage> {
                       ),
                     ),
                   ),
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: NeumorphicBox(
+                          child: IconButton(
+                              icon: Icon(Icons.save, size: 25.sp),
+                              onPressed: () {
+                                List<Location> itineraryList =
+                                    value.getSelectedPlaces();
+
+                                // Save the itinerary using the SavedItineraries provider
+                                SavedItineraries.addItinerary(itineraryList);
+                              })))
                 ],
               ),
               Padding(
@@ -120,8 +115,8 @@ class _ItineraryPageState extends State<ItineraryPage> {
                             // location.duration.toString() +
                             // " hours");
                             return MyTimeLineTile(
-                              start: itineraryItems[index][0],
-                              end: itineraryItems[index][1],
+                              start: itinerary[index][0], //currentStartTime,
+                              end: itinerary[index][1],
                               category: location.category,
                               isFirst: index == 0 ? true : false,
                               isLast:
@@ -130,6 +125,7 @@ class _ItineraryPageState extends State<ItineraryPage> {
                                       : false,
                               isPast: true,
                               itinerary: location.name,
+                              location: location,
                             );
                           },
                         ),

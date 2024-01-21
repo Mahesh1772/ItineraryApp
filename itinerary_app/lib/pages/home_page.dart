@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
           DateTime now = DateTime.now();
           DateTime dt =
               DateTime(now.year, now.month, now.day, value.hour, value.minute);
-          widget.startTime = DateFormat('HH:mm').format(dt);
+          widget.startTime = "${dt.hour}:${dt.minute}";
           // 24-hour format without colon
 
           print(widget.startTime);
