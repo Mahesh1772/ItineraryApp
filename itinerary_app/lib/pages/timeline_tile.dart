@@ -43,41 +43,39 @@ class _MyTimeLineTileState extends State<MyTimeLineTile> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
-      child: Slidable(
-        endActionPane: ActionPane(
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              onPressed: (context) {
-                removePlaceFromSelected();
-              },
-              icon: Icons.delete_forever_rounded,
-              backgroundColor: Colors.red,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(12.r),
-                bottomRight: Radius.circular(12.r),
-              ),
-            ),
-          ],
+      child: TimelineTile(
+        isFirst: widget.isFirst,
+        isLast: widget.isLast,
+        beforeLineStyle: LineStyle(
+          color: widget.isPast ? Colors.deepPurple : Colors.deepPurple.shade100,
+          thickness: 5,
         ),
-        child: TimelineTile(
-          isFirst: widget.isFirst,
-          isLast: widget.isLast,
-          beforeLineStyle: LineStyle(
-            color:
-                widget.isPast ? Colors.deepPurple : Colors.deepPurple.shade100,
-            thickness: 5,
+        indicatorStyle: IndicatorStyle(
+          width: 30,
+          color: widget.isPast ? Colors.deepPurple : Colors.deepPurple.shade100,
+          iconStyle: IconStyle(
+            iconData: Icons.done,
+            color: widget.isPast ? Colors.white : Colors.deepPurple.shade100,
           ),
-          indicatorStyle: IndicatorStyle(
-            width: 30,
-            color:
-                widget.isPast ? Colors.deepPurple : Colors.deepPurple.shade100,
-            iconStyle: IconStyle(
-              iconData: Icons.done,
-              color: widget.isPast ? Colors.white : Colors.deepPurple.shade100,
-            ),
+        ),
+        endChild: Slidable(
+          endActionPane: ActionPane(
+            motion: const StretchMotion(),
+            children: [
+              SlidableAction(
+                onPressed: (context) {
+                  removePlaceFromSelected();
+                },
+                icon: Icons.delete_forever_rounded,
+                backgroundColor: Colors.red,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(12.r),
+                  bottomRight: Radius.circular(12.r),
+                ),
+              ),
+            ],
           ),
-          endChild: ItineraryTile(
+          child: ItineraryTile(
             start: widget.start,
             end: widget.end,
             itinerary: widget.itinerary,
