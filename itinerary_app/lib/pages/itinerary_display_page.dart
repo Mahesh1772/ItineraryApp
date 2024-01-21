@@ -4,6 +4,7 @@ import 'package:itinerary_app/components/itenary_tiles.dart';
 import 'package:itinerary_app/components/location_class.dart';
 import 'package:itinerary_app/models/selected_places.dart';
 import 'package:itinerary_app/components/neumorphic_box.dart';
+import 'package:itinerary_app/pages/saveditinerary_provider.dart';
 import 'package:itinerary_app/pages/timeline_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -75,8 +76,8 @@ class ItineraryPage extends StatefulWidget {
 class _ItineraryPageState extends State<ItineraryPage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectedPlaces>(
-      builder: (context, value, child) => Scaffold(
+    return Consumer2<SelectedPlaces, SavedItineraries>(
+      builder: (context, value, SavedItineraries, child) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Column(
@@ -96,6 +97,18 @@ class _ItineraryPageState extends State<ItineraryPage> {
                       ),
                     ),
                   ),
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: NeumorphicBox(
+                          child: IconButton(
+                              icon: Icon(Icons.save, size: 25.sp),
+                              onPressed: () {
+                                List<Location> itineraryList =
+                                    value.getSelectedPlaces();
+
+                                // Save the itinerary using the SavedItineraries provider
+                                SavedItineraries.addItinerary(itineraryList);
+                              })))
                 ],
               ),
               Padding(
