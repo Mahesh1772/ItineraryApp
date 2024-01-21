@@ -126,9 +126,13 @@ class _ItineraryPageState extends State<ItineraryPage> {
                               end: widget._itinerary[index].end,
                               category: location.category,
                               isFirst: index == 0 ? true : false,
-                              isLast: index == value.getSelectedPlaces().length-1 ? true : false,
+                              isLast:
+                                  index == value.getSelectedPlaces().length - 1
+                                      ? true
+                                      : false,
                               isPast: widget._itinerary[index].value3,
                               itinerary: location.name,
+                              location: location,
                             );
                           },
                         ),
