@@ -66,8 +66,10 @@ lib/
 │   ├── itenary_tiles.dart
 │   ├── location_class.dart
 │   ├── neumorphic_box.dart
+│   ├── places_tile.dart
 ├── models/
 │   ├── selected_places.dart
+│   ├── place_details.dart
 ├── pages/
 │   ├── history_page.dart
 │   ├── home_page.dart
@@ -77,6 +79,11 @@ lib/
 │   ├── timeline_tile.dart
 ├── themes/
 │   ├── theme_provider.dart
+│   ├── light_mode.dart
+│   ├── dark_mode.dart
+├── font/
+│   ├── Gilroy-ExtraBold.otf
+│   ├── Gilroy-Light.otf
 └── main.dart
 ```
 
