@@ -1,6 +1,3 @@
-Here is a comprehensive and extensive `README.md` file for your Flutter itinerary application:
-
-```markdown
 # Itinerary App
 
 This Flutter application helps users plan, save, and view itineraries. It includes features for selecting dates and times, adding locations, and saving itineraries for future reference.
@@ -559,6 +556,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-This `README.md` file provides a detailed overview of your Flutter itinerary application, including features, dependencies, installation instructions, file structure, code overview, usage, contribution guidelines, and licensing information.
